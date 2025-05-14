@@ -209,6 +209,22 @@ select {
   gap: 1rem;
 }
 
+.stats-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-right: 1rem;
+  transition: background-color 0.2s;
+}
+
+.stats-btn:hover {
+  background-color: #2980b9;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   :host {

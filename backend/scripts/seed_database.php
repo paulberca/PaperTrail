@@ -15,7 +15,7 @@ $documents = [
         'title' => 'Client Meeting Notes',
         'pages' => 3,
         'type' => 'Memo',
-        'format' => 'DOCX'
+        'format' => 'TXT'
     ],
     [
         'author' => 'Michael Brown',
@@ -29,7 +29,7 @@ $documents = [
         'title' => 'Invoice #2024-001',
         'pages' => 2,
         'type' => 'Invoice',
-        'format' => 'PDF'
+        'format' => 'ODT'
     ],
     [
         'author' => 'Robert Wilson',
@@ -50,14 +50,14 @@ $documents = [
         'title' => 'Technical Documentation',
         'pages' => 32,
         'type' => 'Report',
-        'format' => 'PDF'
+        'format' => 'ODT'
     ],
     [
         'author' => 'Jennifer Taylor',
         'title' => 'Meeting Agenda',
         'pages' => 1,
         'type' => 'Memo',
-        'format' => 'DOCX'
+        'format' => 'TXT'
     ],
     [
         'author' => 'James Wilson',
@@ -78,7 +78,7 @@ $documents = [
         'title' => 'Annual Performance Review',
         'pages' => 6,
         'type' => 'Report',
-        'format' => 'PDF'
+        'format' => 'ODT'
     ],
     [
         'author' => 'Rachel Green',
@@ -91,7 +91,7 @@ $documents = [
         'author' => 'Daniel Lee',
         'title' => 'Software Architecture Design',
         'pages' => 35,
-        'type' => 'Technical Document',
+        'type' => 'Report',
         'format' => 'PDF'
     ],
     [
@@ -99,13 +99,13 @@ $documents = [
         'title' => 'Customer Feedback Analysis',
         'pages' => 9,
         'type' => 'Report',
-        'format' => 'DOCX'
+        'format' => 'TXT'
     ],
     [
         'author' => 'William Turner',
         'title' => 'Legal Brief - Case #2024-15',
         'pages' => 22,
-        'type' => 'Legal Document',
+        'type' => 'Letter',
         'format' => 'PDF'
     ],
     [
@@ -113,13 +113,13 @@ $documents = [
         'title' => 'Product Launch Plan',
         'pages' => 14,
         'type' => 'Report',
-        'format' => 'DOCX'
+        'format' => 'ODT'
     ],
     [
         'author' => 'Ethan Parker',
         'title' => 'Network Security Audit',
         'pages' => 27,
-        'type' => 'Technical Document',
+        'type' => 'Report',
         'format' => 'PDF'
     ],
     [
@@ -127,7 +127,7 @@ $documents = [
         'title' => 'HR Policy Update',
         'pages' => 5,
         'type' => 'Memo',
-        'format' => 'DOCX'
+        'format' => 'TXT'
     ],
     [
         'author' => 'Noah Anderson',
@@ -140,8 +140,8 @@ $documents = [
         'author' => 'Emma Thompson',
         'title' => 'User Interface Design Document',
         'pages' => 19,
-        'type' => 'Technical Document',
-        'format' => 'PDF'
+        'type' => 'Report',
+        'format' => 'ODT'
     ],
     [
         'author' => 'Lucas Rodriguez',
@@ -154,28 +154,28 @@ $documents = [
         'author' => 'Ava Wilson',
         'title' => 'Employee Training Manual',
         'pages' => 42,
-        'type' => 'Technical Document',
+        'type' => 'Report',
         'format' => 'PDF'
     ],
     [
         'author' => 'Mason Brown',
         'title' => 'Vendor Agreement',
         'pages' => 7,
-        'type' => 'Legal Document',
-        'format' => 'PDF'
+        'type' => 'Letter',
+        'format' => 'ODT'
     ],
     [
         'author' => 'Charlotte Davis',
         'title' => 'Project Status Update',
         'pages' => 4,
         'type' => 'Memo',
-        'format' => 'DOCX'
+        'format' => 'TXT'
     ],
     [
         'author' => 'Elijah Taylor',
         'title' => 'System Architecture Overview',
         'pages' => 31,
-        'type' => 'Technical Document',
+        'type' => 'Report',
         'format' => 'PDF'
     ],
     [
@@ -189,8 +189,8 @@ $documents = [
         'author' => 'Benjamin Clark',
         'title' => 'Code Review Guidelines',
         'pages' => 8,
-        'type' => 'Technical Document',
-        'format' => 'PDF'
+        'type' => 'Report',
+        'format' => 'TXT'
     ],
     [
         'author' => 'Mia Garcia',
@@ -210,29 +210,29 @@ $documents = [
         'author' => 'Evelyn Robinson',
         'title' => 'Product Requirements Document',
         'pages' => 23,
-        'type' => 'Technical Document',
-        'format' => 'DOCX'
+        'type' => 'Report',
+        'format' => 'ODT'
     ],
     [
         'author' => 'Alexander Wright',
         'title' => 'Database Migration Plan',
         'pages' => 17,
-        'type' => 'Technical Document',
+        'type' => 'Report',
         'format' => 'PDF'
     ],
     [
         'author' => 'Victoria Chen',
         'title' => 'Customer Onboarding Guide',
         'pages' => 25,
-        'type' => 'Technical Document',
+        'type' => 'Report',
         'format' => 'DOCX'
     ],
     [
         'author' => 'Sebastian Lee',
         'title' => 'API Documentation v2.0',
         'pages' => 38,
-        'type' => 'Technical Document',
-        'format' => 'PDF'
+        'type' => 'Report',
+        'format' => 'TXT'
     ],
     [
         'author' => 'Grace Taylor',
@@ -245,7 +245,7 @@ $documents = [
         'author' => 'Owen Martinez',
         'title' => 'Server Maintenance Schedule',
         'pages' => 9,
-        'type' => 'Technical Document',
+        'type' => 'Report',
         'format' => 'PDF'
     ],
     [
@@ -253,7 +253,7 @@ $documents = [
         'title' => 'Brand Guidelines 2024',
         'pages' => 21,
         'type' => 'Report',
-        'format' => 'PDF'
+        'format' => 'ODT'
     ],
     [
         'author' => 'Gabriel White',
@@ -266,7 +266,7 @@ $documents = [
         'author' => 'Chloe Brown',
         'title' => 'Employee Handbook Update',
         'pages' => 33,
-        'type' => 'Technical Document',
+        'type' => 'Report',
         'format' => 'PDF'
     ],
     [
@@ -274,20 +274,20 @@ $documents = [
         'title' => 'Software Release Notes',
         'pages' => 5,
         'type' => 'Memo',
-        'format' => 'DOCX'
+        'format' => 'TXT'
     ],
     [
         'author' => 'Zoe Garcia',
         'title' => 'Data Privacy Policy',
         'pages' => 14,
-        'type' => 'Legal Document',
-        'format' => 'PDF'
+        'type' => 'Letter',
+        'format' => 'ODT'
     ],
     [
         'author' => 'Caleb Wilson',
         'title' => 'Infrastructure Upgrade Plan',
         'pages' => 27,
-        'type' => 'Technical Document',
+        'type' => 'Report',
         'format' => 'DOCX'
     ],
     [
@@ -301,8 +301,8 @@ $documents = [
         'author' => 'Isaac Thompson',
         'title' => 'Development Roadmap',
         'pages' => 19,
-        'type' => 'Technical Document',
-        'format' => 'DOCX'
+        'type' => 'Report',
+        'format' => 'TXT'
     ],
     [
         'author' => 'Aria Rodriguez',
@@ -315,7 +315,7 @@ $documents = [
         'author' => 'Leo Davis',
         'title' => 'Cloud Migration Strategy',
         'pages' => 31,
-        'type' => 'Technical Document',
+        'type' => 'Report',
         'format' => 'PDF'
     ],
     [
@@ -323,13 +323,13 @@ $documents = [
         'title' => 'Quality Assurance Report',
         'pages' => 16,
         'type' => 'Report',
-        'format' => 'DOCX'
+        'format' => 'ODT'
     ],
     [
         'author' => 'Max Wilson',
         'title' => 'Service Level Agreement',
         'pages' => 11,
-        'type' => 'Legal Document',
+        'type' => 'Letter',
         'format' => 'PDF'
     ],
     [
@@ -343,8 +343,8 @@ $documents = [
         'author' => 'Felix Brown',
         'title' => 'System Performance Analysis',
         'pages' => 29,
-        'type' => 'Technical Document',
-        'format' => 'PDF'
+        'type' => 'Report',
+        'format' => 'TXT'
     ]
 ];
 

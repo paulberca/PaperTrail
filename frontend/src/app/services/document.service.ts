@@ -17,6 +17,17 @@ export interface DocumentOptions {
   formats: string[];
 }
 
+export interface DocumentStats {
+  type: string;
+  total_documents: number;
+  total_pages: number;
+  avg_pages: number;
+  min_pages: number;
+  max_pages: number;
+  unique_authors: number;
+  unique_formats: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -61,5 +72,9 @@ export class DocumentService {
 
   getDocumentFormats(): Observable<string[]> {
     return this.http.get<string[]>(`${this.apiUrl}/get_document_formats.php`);
+  }
+
+  getDocumentStats(): Observable<DocumentStats[]> {
+    return this.http.get<DocumentStats[]>(`${this.apiUrl}/get_document_stats.php`);
   }
 }
