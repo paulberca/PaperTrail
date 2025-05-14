@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { DocumentService, Document, DocumentOptions } from '../../services/docum
   templateUrl: './document-list.component.html',
   styleUrls: ['./document-list.component.css']
 })
-export class DocumentListComponent {
+export class DocumentListComponent implements OnInit {
   documents: Document[] = [];
   documentOptions: DocumentOptions = {
     types: [],
@@ -25,19 +25,34 @@ export class DocumentListComponent {
     type: '',
     format: ''
   };
+  documentTypes: string[] = [];
+  documentFormats: string[] = [];
+  selectedType: string = '';
+  selectedFormat: string = '';
 
   constructor(
     private documentService: DocumentService,
     public router: Router
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.loadDocuments();
     this.loadDocumentOptions();
+    this.loadDocumentTypes();
+    this.loadDocumentFormats();
   }
 
   loadDocuments() {
-    this.documentService.getDocuments().subscribe({
-      next: (docs) => this.documents = docs,
-      error: (err) => console.error('Error loading documents', err)
+    this.documentService.getFilteredDocuments(
+      this.selectedType || undefined,
+      this.selectedFormat || undefined
+    ).subscribe({
+      next: (data) => {
+        this.documents = data;
+      },
+      error: (error) => {
+        console.error('Error loading documents:', error);
+      }
     });
   }
 
@@ -46,7 +61,31 @@ export class DocumentListComponent {
       next: (options) => {
         this.documentOptions = options;
       },
-      error: (err) => console.error('Error loading document options', err)
+      error: (error) => {
+        console.error('Error loading document options:', error);
+      }
+    });
+  }
+
+  loadDocumentTypes() {
+    this.documentService.getDocumentTypes().subscribe({
+      next: (types) => {
+        this.documentTypes = types;
+      },
+      error: (error) => {
+        console.error('Error loading document types:', error);
+      }
+    });
+  }
+
+  loadDocumentFormats() {
+    this.documentService.getDocumentFormats().subscribe({
+      next: (formats) => {
+        this.documentFormats = formats;
+      },
+      error: (error) => {
+        console.error('Error loading document formats:', error);
+      }
     });
   }
 
@@ -121,5 +160,15 @@ export class DocumentListComponent {
 
   cancelEdit() {
     this.editingDocument = null;
+  }
+
+  applyFilters() {
+    this.loadDocuments();
+  }
+
+  clearFilters() {
+    this.selectedType = '';
+    this.selectedFormat = '';
+    this.loadDocuments();
   }
 }

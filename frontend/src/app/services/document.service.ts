@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface Document {
   id: number;
@@ -20,27 +21,45 @@ export interface DocumentOptions {
   providedIn: 'root'
 })
 export class DocumentService {
-  private baseUrl = 'http://localhost:8000/api';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
-  getDocuments(): Observable<Document[]> {
-    return this.http.get<Document[]>(`${this.baseUrl}/get_documents.php`);
+  getDocuments(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/get_documents.php`);
+  }
+
+  getFilteredDocuments(type?: string, format?: string): Observable<any[]> {
+    let url = `${this.apiUrl}/get_filtered_documents.php`;
+    const params: any = {};
+    
+    if (type) params.type = type;
+    if (format) params.format = format;
+    
+    return this.http.get<any[]>(url, { params });
   }
 
   getDocumentOptions(): Observable<DocumentOptions> {
-    return this.http.get<DocumentOptions>(`${this.baseUrl}/get_document_options.php`);
+    return this.http.get<DocumentOptions>(`${this.apiUrl}/get_document_options.php`);
   }
 
-  addDocument(document: Omit<Document, 'id'>): Observable<any> {
-    return this.http.post(`${this.baseUrl}/add_document.php`, document);
+  addDocument(document: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/add_document.php`, document);
   }
 
-  updateDocument(document: Document): Observable<any> {
-    return this.http.put(`${this.baseUrl}/update_document.php`, document);
+  updateDocument(document: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/update_document.php`, document);
   }
 
   deleteDocument(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/delete_document.php?id=${id}`);
+    return this.http.delete(`${this.apiUrl}/delete_document.php?id=${id}`);
+  }
+
+  getDocumentTypes(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/get_document_types.php`);
+  }
+
+  getDocumentFormats(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/get_document_formats.php`);
   }
 }
