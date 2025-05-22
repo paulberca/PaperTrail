@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="header">
+    <h1>Documents</h1>
+  </div>
+
+  <div class="filters">
+    <div class="filter-section">
+      <div class="filter-group">
+        <label for="typeFilter">Document Type:</label>
+        <select
+          id="typeFilter"
+          [(ngModel)]="selectedType"
+          (change)="applyFilters()"
+        >
+          <option value="">All Types</option>
+          <option *ngFor="let type of documentOptions.types" [value]="type">
+            {{ type }}
+          </option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="formatFilter">Format:</label>
+        <select
+          id="formatFilter"
+          [(ngModel)]="selectedFormat"
+          (change)="applyFilters()"
+        >
+          <option value="">All Formats</option>
+          <option
+            *ngFor="let format of documentOptions.formats"
+            [value]="format"
+          >
+            {{ format }}
+          </option>
+        </select>
+      </div>
+      <button class="clear-btn" (click)="clearFilters()">Clear Filters</button>
+    </div>
+
+    <div class="filter-actions">
+      <button class="stats-btn" (click)="router.navigate(['/stats'])">
+        View Statistics
+      </button>
+      <button class="add-btn" (click)="router.navigate(['/add'])">
+        Add Document
+      </button>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Author</th>
+          <th>Title</th>
+          <th>Pages</th>
+          <th>Type</th>
+          <th>Format</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let doc of documents"
+          (click)="router.navigate(['/edit', doc.id])"
+          class="clickable"
+        >
+          <td>{{ doc.author }}</td>
+          <td>{{ doc.title }}</td>
+          <td>{{ doc.pages }}</td>
+          <td>{{ doc.type }}</td>
+          <td>{{ doc.format }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

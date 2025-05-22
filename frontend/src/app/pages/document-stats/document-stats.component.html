@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>Document Statistics</h1>
+
+  <div class="loading" *ngIf="loading">Loading statistics...</div>
+  <div class="error" *ngIf="error">{{ error }}</div>
+
+  <div class="stats-grid" *ngIf="!loading && !error">
+    <div class="stat-card" *ngFor="let stat of stats">
+      <h2>{{ stat.type }}</h2>
+      <div class="stat-content">
+        <div class="stat-item">
+          <span class="label">Total:</span>
+          <span class="value">{{ stat.total_documents }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">Pages:</span>
+          <span class="value">{{ stat.total_pages }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">Avg Pages:</span>
+          <span class="value">{{ stat.avg_pages | number : "1.0-1" }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">Authors:</span>
+          <span class="value">{{ stat.unique_authors }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">Formats:</span>
+          <span class="value">{{ stat.unique_formats }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

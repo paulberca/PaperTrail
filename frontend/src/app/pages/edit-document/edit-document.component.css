@@ -1,0 +1,82 @@
+:host {
+  display: block;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #d3e6ff;
+  border-radius: 4px;
+}
+
+select {
+  background-color: white;
+  cursor: pointer;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.button-group {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #d3e6ff;
+  border-radius: 4px;
+  background-color: #c3e1ff;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background-color: #c3e1ff;
+  font-weight: 700;
+}
+
+button[type="button"] {
+  background-color: #f8fafc;
+}
+
+.delete-btn {
+  background-color: #ffebee;
+  border-color: #ffcdd2;
+  color: #c62828;
+}
+
+.delete-btn:hover {
+  background-color: #ffcdd2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :host {
+    padding: 1rem;
+  }
+}
