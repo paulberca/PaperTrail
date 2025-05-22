@@ -5,7 +5,6 @@ header('Content-Type: application/json');
 
 require_once '../db/connection.php';
 
-// Get statistics for each document type
 $sql = "SELECT 
     type,
     COUNT(*) as total_documents,

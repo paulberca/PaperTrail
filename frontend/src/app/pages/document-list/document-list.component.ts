@@ -17,14 +17,6 @@ export class DocumentListComponent implements OnInit {
     types: [],
     formats: []
   };
-  editingDocument: Document | null = null;
-  formErrors = {
-    author: '',
-    title: '',
-    pages: '',
-    type: '',
-    format: ''
-  };
   documentTypes: string[] = [];
   documentFormats: string[] = [];
   selectedType: string = '';
@@ -89,64 +81,6 @@ export class DocumentListComponent implements OnInit {
     });
   }
 
-  editDocument(doc: Document) {
-    this.editingDocument = { ...doc };
-  }
-
-  validateForm(): boolean {
-    if (!this.editingDocument) return false;
-    
-    let isValid = true;
-    this.formErrors = {
-      author: '',
-      title: '',
-      pages: '',
-      type: '',
-      format: ''
-    };
-
-    if (!this.editingDocument.author.trim()) {
-      this.formErrors.author = 'Author is required';
-      isValid = false;
-    }
-
-    if (!this.editingDocument.title.trim()) {
-      this.formErrors.title = 'Title is required';
-      isValid = false;
-    }
-
-    if (!this.editingDocument.pages || this.editingDocument.pages <= 0) {
-      this.formErrors.pages = 'Pages must be a positive number';
-      isValid = false;
-    }
-
-    if (!this.editingDocument.type) {
-      this.formErrors.type = 'Type is required';
-      isValid = false;
-    }
-
-    if (!this.editingDocument.format) {
-      this.formErrors.format = 'Format is required';
-      isValid = false;
-    }
-
-    return isValid;
-  }
-
-  saveDocument() {
-    if (!this.editingDocument || !this.validateForm()) {
-      return;
-    }
-
-    this.documentService.updateDocument(this.editingDocument).subscribe({
-      next: () => {
-        this.editingDocument = null;
-        this.loadDocuments();
-      },
-      error: (err) => console.error('Error updating document', err)
-    });
-  }
-
   deleteDocument(id: number) {
     if (confirm('Are you sure you want to delete this document?')) {
       this.documentService.deleteDocument(id).subscribe({
@@ -156,10 +90,6 @@ export class DocumentListComponent implements OnInit {
         error: (err) => console.error('Error deleting document', err)
       });
     }
-  }
-
-  cancelEdit() {
-    this.editingDocument = null;
   }
 
   applyFilters() {

@@ -67,7 +67,7 @@
 
 .add-btn {
   padding: 6px 12px;
-  background-color: #4caf50;
+  background-color: #5cb25f;
   color: white;
   border: none;
   border-radius: 4px;
@@ -83,7 +83,7 @@
 
 .clear-btn {
   padding: 6px 12px;
-  background-color: #f44336;
+  background-color: #ce2418;
   color: white;
   border: none;
   border-radius: 4px;
@@ -94,7 +94,7 @@
 }
 
 .clear-btn:hover {
-  background-color: #da190b;
+  background-color: #c20d00;
 }
 
 .table-container {
@@ -136,7 +136,7 @@ td {
 .delete-btn {
   background-color: #ffebee;
   border-color: #ffcdd2;
-  color: #c62828;
+  color: #b10b0b;
 }
 
 .delete-btn:hover {
@@ -210,7 +210,7 @@ select {
 }
 
 .stats-btn {
-  background-color: #3498db;
+  background-color: #84c3ed;
   color: white;
   border: none;
   padding: 0.5rem 1rem;

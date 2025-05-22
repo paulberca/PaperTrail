@@ -34,7 +34,7 @@ export class EditDocumentComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.documentService.getDocuments().subscribe({
+      this.documentService.getFilteredDocuments().subscribe({
         next: (docs) => {
           const doc = docs.find(d => d.id === Number(id));
           if (doc) {

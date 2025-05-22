@@ -21,8 +21,6 @@ if ($format) {
     $params[] = $format;
 }
 
-$sql .= " ORDER BY id DESC";
-
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 $documents = $stmt->fetchAll(PDO::FETCH_ASSOC);
