@@ -12,10 +12,16 @@ public class DocumentsController : ControllerBase
         _context = context;
     }
 
+    private bool IsAuthenticated()
+    {
+        return HttpContext.Session.GetInt32("UserId") != null;
+    }
+
     // GET: api/documents?type=...&format=...
     [HttpGet]
     public async Task<IActionResult> GetFilteredDocuments([FromQuery] string type = null, [FromQuery] string format = null)
     {
+        if (!IsAuthenticated()) return Unauthorized();
         var query = _context.Documents.AsQueryable();
         if (!string.IsNullOrEmpty(type))
             query = query.Where(d => d.Type == type);
@@ -29,6 +35,7 @@ public class DocumentsController : ControllerBase
     [HttpGet("stats")]
     public async Task<IActionResult> GetDocumentStats()
     {
+        if (!IsAuthenticated()) return Unauthorized();
         var stats = await _context.Documents
             .GroupBy(d => d.Type)
             .Select(g => new
@@ -51,6 +58,7 @@ public class DocumentsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> AddDocument([FromBody] Document doc)
     {
+        if (!IsAuthenticated()) return Unauthorized();
         _context.Documents.Add(doc);
         await _context.SaveChangesAsync();
         return Ok(new { success = true });
@@ -60,6 +68,7 @@ public class DocumentsController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateDocument(int id, [FromBody] Document doc)
     {
+        if (!IsAuthenticated()) return Unauthorized();
         var existing = await _context.Documents.FindAsync(id);
         if (existing == null)
             return NotFound(new { error = "Document not found" });
@@ -76,6 +85,7 @@ public class DocumentsController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteDocument(int id)
     {
+        if (!IsAuthenticated()) return Unauthorized();
         var doc = await _context.Documents.FindAsync(id);
         if (doc == null)
             return NotFound(new { error = "Document not found" });
@@ -88,6 +98,7 @@ public class DocumentsController : ControllerBase
     [HttpGet("options")]
     public IActionResult GetDocumentOptions()
     {
+        if (!IsAuthenticated()) return Unauthorized();
         var data = new
         {
             types = new[] { "Report", "Invoice", "Letter", "Research Paper", "Memo" },
