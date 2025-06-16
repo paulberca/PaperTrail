@@ -8,5 +8,6 @@ export const routes: Routes = [
   { path: '', component: DocumentListComponent },
   { path: 'add', component: AddDocumentComponent },
   { path: 'edit/:id', component: EditDocumentComponent },
-  { path: 'stats', component: DocumentStatsComponent }
+  { path: 'stats', component: DocumentStatsComponent },
+  { path: 'login', loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent) }
 ];

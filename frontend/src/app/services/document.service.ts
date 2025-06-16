@@ -43,38 +43,62 @@ export class DocumentService {
     const params: any = {};
     if (type) params.type = type;
     if (format) params.format = format;
-    return this.http.get<any[]>(url, { params });
+    return this.http.get<any[]>(url, { params, withCredentials: true });
   }
 
   getDocumentOptions(): Observable<DocumentOptions> {
-    return this.http.get<DocumentOptions>(`${this.apiUrl}/documents/options`);
+    return this.http.get<DocumentOptions>(`${this.apiUrl}/documents/options`, { withCredentials: true });
   }
 
   addDocument(document: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/documents`, document);
+    return this.http.post(`${this.apiUrl}/documents`, document, { withCredentials: true });
   }
 
   updateDocument(document: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/documents/${document.id}`, document);
+    return this.http.put(`${this.apiUrl}/documents/${document.id}`, document, { withCredentials: true });
   }
 
   deleteDocument(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/documents/${id}`);
+    return this.http.delete(`${this.apiUrl}/documents/${id}`, { withCredentials: true });
   }
 
   getDocumentStats(): Observable<DocumentStats[]> {
-    return this.http.get<DocumentStats[]>(`${this.apiUrl}/documents/stats`);
+    return this.http.get<DocumentStats[]>(`${this.apiUrl}/documents/stats`, { withCredentials: true });
   }
 
   getDocumentTypes(): Observable<string[]> {
-    return this.http.get<DocumentOptions>(`${this.apiUrl}/documents/options`).pipe(
+    return this.http.get<DocumentOptions>(`${this.apiUrl}/documents/options`, { withCredentials: true }).pipe(
       map(options => options.types)
     );
   }
 
   getDocumentFormats(): Observable<string[]> {
-    return this.http.get<DocumentOptions>(`${this.apiUrl}/documents/options`).pipe(
+    return this.http.get<DocumentOptions>(`${this.apiUrl}/documents/options`, { withCredentials: true }).pipe(
       map(options => options.formats)
     );
+  }
+}
+
+// AuthService for user authentication
+@Injectable({ providedIn: 'root' })
+export class AuthService {
+  private baseUrl = environment.apiUrl + '/auth';
+
+  constructor(private http: HttpClient) {}
+
+  login(username: string, password: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/login`, { username, password }, { withCredentials: true });
+  }
+
+  logout(): Observable<any> {
+    return this.http.post(`${this.baseUrl}/logout`, {}, { withCredentials: true });
+  }
+
+  checkSession(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/session`, { withCredentials: true });
+  }
+
+  register(username: string, password: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/register`, { username, password }, { withCredentials: true });
   }
 }
